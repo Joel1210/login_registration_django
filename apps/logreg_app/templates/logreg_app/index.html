@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'books_authors_app/css/style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h1>Registration</h1>
+
+
+                <form action="/register" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+
+
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if 'fn' in message.tags %}
+                        <p class="text-danger">{{ message}}</p>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+
+                        <label for="firstname">First Name</label>
+                        <input type="text" class="form-control col-6" id="firstname" name="fn"
+                            placeholder="Insert First Name">
+                    </div>
+
+                    <div class="form-group">
+
+
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if 'ln' in message.tags %}
+                        <p class="text-danger">{{ message }}</p>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+
+                        <label for="lastname">Last Name</label>
+                        <input type="text" class="form-control col-6" id="lastname" name="ln"
+                            placeholder="Insert Last Name">
+                    </div>
+                    <div class="form-group">
+
+                        <label for="birthday">Birthday</label>
+                        <input type="date" class="form-control col-6" id="birthday" name="bday"
+                            placeholder="Enter your D.O.B.">
+                    </div>
+                    <div class="form-group">
+
+
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if 'em' in message.tags %}
+                        <p class="text-danger"> {{ message }}</p>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control col-6" id="email" name="em" placeholder="Insert Email">
+                    </div>
+                    <div class="form-group">
+
+
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if 'pword' in message.tags %}
+                        <p class="text-danger"> {{ message }}</p>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+
+                        <label for="password">Password </label>
+                        <input type="password" class="form-control col-6" id="password" name="pword"
+                            placeholder="Make a password">
+                    </div>
+                    <div class="form-group">
+
+
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if 'cpword' in message.tags %}
+                        <p class="text-danger"> {{ message }}</p>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+
+                        <label for="confirm">Confirm Password</label>
+                        <input type="password" class="form-control col-6" id="confirm" name="confirmpw"
+                            placeholder="Confirm your password">
+                    </div>
+                    <input type="submit" class="btn btn-dark" value="Register">
+                </form>
+            </div>
+
+            <div class="col-6">
+                <h1>Login</h1>
+                <form action="/login" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+
+
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if 'login' in message.tags %}
+                        <p class="text-danger"> {{ message }}</p>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+
+                        <label for="logemail">Email</label>
+                        <input type="text" class="form-control col-6" id="logemail" name="logem" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+
+                        <label for="logpass">Password</label>
+                        <input type="password" class="form-control col-6" id="logpass" name="logpw"
+                            placeholder="Password">
+                    </div>
+
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-dark" value="Login">
+
+
+                </form>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</body>
+
+</html>
